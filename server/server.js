@@ -36,6 +36,22 @@ app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/address', addressRouter)
 app.use('/api/order', orderRouter)
+const url = "https://final-year-1-wb6b.onrender.com"
+const interval = 30000
+
+
+function reloadWebsite() {
+    axios
+        .get(url)
+        .then((res) => {
+            console.log("Website reloaded");
+        })
+        .catch((err) => {
+            console.log(`Error : ${err.message}`);
+        });
+}
+
+setInterval(reloadWebsite, interval);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
